@@ -1,12 +1,14 @@
 @import "compass";
 @import "breakpoint";
+h1 {
+    color: blueviolet;
+}
 
-//Center Content
 .container {
 	max-width: 1100px;
 	margin: 0 auto;
 }
-//Todo clean up some crappy code
+
 .cards {
 	display: -webkit-flex;
 	display: flex;
