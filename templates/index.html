@@ -1,17 +1,39 @@
 <html>
     <head>
         <title>Source of wisdom</title>
-        <link rel="stylesheet" type="text/css" href="main.css">
+        <style>
+            body{
+                background:#000;
+                margin:0;
+                width:100%;
+                overflow:hidden;
+                color: wheat;
+              }
+            .container {
+                background: black;
+                margin-left: auto;
+                margin-right: auto;
+                width: 30em;
+                padding: 1em;
+                padding-top: 0em;
+                display:flexbox;
+            }
+            img {
+                border-radius: 50%;
+                float: right;
+                margin-left: 1em;
+            }
+        </style>
     </head> 
     <body>
-        <h1>Source of wisdom</h1>
-        <p>Welcome!</p> 
         <div class="container">
+
+        <h1>Source of wisdom</h1>
             <div class="cards">
-                <a class="card" href="#">
+                <img src="http://placekitten.com/150/150" alt="cat">
                     <span class="card-header" style="background-image: url(http://placeimg.com/400/200/animals);">
                         <span class="card-title">
-                            <h3>Your dayly advice:</h3>
+                            <h3>Your dayly advice from a kitten:</h3>
                         </span>
                     </span>
                     <span class="card-summary">
@@ -20,8 +42,51 @@
                     <span class="card-meta">
                         As the wise old cat says.
                     </span>
-                </a>
             </div>
         </div>
+        <canvas></canvas>
+
+        <script>
+        
+            var t = 0;
+            var c = document.querySelector("canvas");     
+            var $ = c.getContext('2d');
+            c.width = window.innerWidth;
+            c.height = window.innerHeight;
+            $.fillStyle = 'hsla(0,0%,0%,1)';
+    
+            window.addEventListener('resize', function() {
+              c.width = window.innerWidth;
+              c.height = window.innerHeight;
+            }, false);
+    
+            function draw() {
+              $.globalCompositeOperation = 'source-over';
+              $.fillStyle = 'hsla(0,0%,0%,.1)';
+              $.fillRect(0, 0, c.width, c.height);
+              var foo, i, j, r;
+              foo = Math.sin(t) * 2 * Math.PI;
+              for (i=0; i<400; ++i) {
+                r = 400 * Math.sin(i * foo);
+                $.globalCompositeOperation = '';
+                $.fillStyle = 'hsla(' + i + 12 + ',100%, 60%,1)';
+                $.beginPath();
+                $.arc(Math.sin(i) * r + (c.width / 2), 
+                      Math.cos(i) * r + (c.height / 2), 
+                      1.5, 0, Math.PI * 2);
+                $.fill();
+    
+              }
+              t += 0.000005;
+              return t %= 2 * Math.PI;
+    
+            };
+    
+            function run() {
+              window.requestAnimationFrame(run);
+              draw();
+            }
+            run();
+        </script>
     </body>
 </html>
