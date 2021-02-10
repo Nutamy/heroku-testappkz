@@ -1,10 +1,27 @@
 <html>
     <head>
-        <title>My project</title>
+        <title>Source of wisdom</title>
+        <link rel="stylesheet" type="text/css" href="main.css">
     </head> 
     <body>
-        <h1>First page</h1>
-        <p>Welcome, {{ name }}!</p> 
-        <p>{{ advise }}</p>
+        <h1>Source of wisdom</h1>
+        <p>Welcome!</p> 
+        <div class="container">
+            <div class="cards">
+                <a class="card" href="#">
+                    <span class="card-header" style="background-image: url(http://placeimg.com/400/200/animals);">
+                        <span class="card-title">
+                            <h3>Your dayly advice:</h3>
+                        </span>
+                    </span>
+                    <span class="card-summary">
+                        {{ advise }}
+                    </span>
+                    <span class="card-meta">
+                        As the wise old cat says.
+                    </span>
+                </a>
+            </div>
+        </div>
     </body>
 </html>
